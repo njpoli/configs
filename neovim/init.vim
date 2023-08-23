@@ -1,3 +1,4 @@
+let mapleader=" "
 set number
 set relativenumber
 set autoindent
@@ -15,9 +16,10 @@ call plug#begin()
   Plug 'https://github.com/ap/vim-css-color'
   Plug 'https://github.com/rafi/awesome-vim-colorschemes'
   Plug 'ryanoasis/vim-devicons'
-  Plug 'https://github.com/tc50cal/vim-terminal'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'https://github.com/ctrlpvim/ctrlp.vim'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' }
+  " or                                , { 'branch': '0.1.x' }
 
 call plug#end()
 
@@ -26,12 +28,15 @@ nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
-" CTRLP Plugin
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fs <cmd>Telescope live_grep<cr>
+nnoremap <leader>fg <cmd>Telescope git_files<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " Virtual environment python location
-let g:python3_host_prog='C:/Users/admin-npoli/envs/neovim3/Scripts/python.exe'
+let g:python3_host_prog=$HOME . '/envs/neovim3/Scripts/python.exe'
 
 :colorscheme jellybeans
 
